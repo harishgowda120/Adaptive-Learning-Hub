@@ -27,7 +27,7 @@ export default function Navbar() {
                 <Link className="nav-link active" to="/" onClick={handleNavCollapse}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/leaderboard" onClick={handleNavCollapse}>LeadersBoard</Link>
+                <Link className="nav-link active" to="/" onClick={handleNavCollapse}>LeadersBoard</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link active" to="/resource" onClick={handleNavCollapse}>Resource</Link>
