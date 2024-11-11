@@ -3,9 +3,8 @@ import axios from 'axios';
 import pro from './images/image.png';
 
 const LeadersBoard = () => {
-  const [students, setStudents] = useState([]); // Correct initialization of state
+  const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -15,21 +14,16 @@ const LeadersBoard = () => {
         // Sort students by score in descending order
         const sortedStudents = response.data.sort((a, b) => b.score - a.score);
         
-        setStudents(sortedStudents); // Assign data correctly
+        setStudents(sortedStudents);
         setLoading(false);
-        setError(false);
       } catch (error) {
         console.error('Error fetching students:', error);
         setLoading(false);
-        setError(true);
       }
     };
 
     fetchStudents();
   }, []);
-
-  // Early return if error occurs during fetching
-  if (error) return null;
 
   return (
     <div className="container mt-5">
@@ -76,6 +70,7 @@ const LeadersBoard = () => {
                   >
                     <th scope="row" className="text-center">{index + 1}</th>
                     <td className="d-flex align-items-center">
+                      
                       {student.name}
                     </td>
                     <td className="text-center">{student.score} points</td>
