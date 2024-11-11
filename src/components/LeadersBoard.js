@@ -22,8 +22,8 @@ const LeadersBoard = () => {
   //     }
   //   };
 
-    fetchStudents();
-  }, []);
+  //   fetchStudents();
+  // }, []);
 
   return (
     <div className="container mt-5">
