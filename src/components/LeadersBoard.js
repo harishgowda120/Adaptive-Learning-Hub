@@ -3,7 +3,7 @@ import axios from 'axios';
 import pro from './images/image.png';
 
 const LeadersBoard = () => {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState([]); // Correct initialization of state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -15,7 +15,7 @@ const LeadersBoard = () => {
         // Sort students by score in descending order
         const sortedStudents = response.data.sort((a, b) => b.score - a.score);
         
-        setStudents(sortedStudents);
+        setStudents(sortedStudents); // Assign data correctly
         setLoading(false);
         setError(false);
       } catch (error) {
@@ -28,7 +28,7 @@ const LeadersBoard = () => {
     fetchStudents();
   }, []);
 
-  // If data fails to load, return nothing
+  // Early return if error occurs during fetching
   if (error) return null;
 
   return (
@@ -72,4 +72,22 @@ const LeadersBoard = () => {
                 {students.map((student, index) => (
                   <tr
                     key={student._id}
-                    className={index === 0 ? 'table-warning' : index === 1 ? '
+                    className={index === 0 ? 'table-warning' : index === 1 ? 'table-secondary' : index === 2 ? 'table-bronze' : 'table-light'}
+                  >
+                    <th scope="row" className="text-center">{index + 1}</th>
+                    <td className="d-flex align-items-center">
+                      {student.name}
+                    </td>
+                    <td className="text-center">{student.score} points</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default LeadersBoard;
